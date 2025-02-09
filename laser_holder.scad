@@ -3,6 +3,7 @@
 //laser();
 holder();
 //gutter();
+//gutter2();
 
 module laser() {
   cylinder(d=9, h=65, $fn=64, center=true);
@@ -18,8 +19,8 @@ module holder() {
 
 module cut_holder() {
     cube([20, 20, 52], center=true);
-    translate([4, 0, 0])
-    gutter();
+    translate([4.2, 0, 0])
+    gutter2();
 }
 
 module gutter() {
@@ -29,4 +30,8 @@ module gutter() {
     translate([0, 18, 0])
     cube([20, 20, 53], center=true);
   }
+}
+
+module gutter2() {
+  cylinder(d=23, h=53, center=true, $fn=6); 
 }
