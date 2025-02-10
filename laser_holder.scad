@@ -1,5 +1,7 @@
 
-camera_screw_hole();
+mini_holder();
+//cut_mini_holder();
+//camera_screw_hole();
 //screw_holes();
 //cut_holder();
 //screw_hole();
@@ -11,6 +13,23 @@ camera_screw_hole();
 
 module laser() {
   cylinder(d=9, h=65, $fn=64, center=true);
+}
+
+module mini_holder() {
+  difference() {
+    translate([5, 5+1, 0])
+    cube([50, 30, 50], center=true);
+    cut_mini_holder();
+  }
+}
+
+module cut_mini_holder() {
+  cut_holder();
+// Cut for mini holder
+  translate([5, 6, -20])
+  cube([51, 31, 20], center=true);
+  translate([5, 6, 20])
+  cube([51, 31, 20], center=true);
 }
 
 module holder() {
@@ -26,8 +45,6 @@ module cut_holder() {
     translate([4.2, 0, 0])
     gutter2();
     screw_holes();
-//    translate([-6, 0, 0])
-//    nut_m4_hole();
 }
 
 module gutter() {
