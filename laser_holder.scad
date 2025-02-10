@@ -7,7 +7,8 @@
 //gopro_foot();
 //gopro_foot_trapez();
 //gopro_foot_trapez2();
-translate([0, 6.5, 15.5])
+//translate([0, 6.5, 15.5])
+rotate([0, -65, 0])
 gopro_leg();
 
 //translate([0, 0, 15.5])
@@ -18,9 +19,11 @@ gopro_leg();
 //cylinder(d=15, h=3.2, $fn=64, center=true);
 //translate([0, 12, 34])
 //gopro_base();
-translate([0, 18, 68])
-rotate([0, 90, 180])
-mini_holder();
+
+//translate([0, 18, 68])
+//rotate([0, 90, 180])
+//mini_holder();
+
 //cut_mini_holder();
 //camera_screw_hole();
 //screw_holes();
@@ -165,7 +168,7 @@ module gopro_foot_trapez2() {
   difference() {
     gopro_foot_trapez();
     translate([0, -11, 0])    
-    rotate([45, 0, 90])
+    rotate([65, 0, 90])
     screw_hole_proof();
   }
 }
@@ -180,7 +183,7 @@ module gopro_base() {
 }
 
 module gopro_leg() {
-  translate([0, 7, 17.5])
+  translate([0, 6.9, 17.5])
   gopro_base();
   gopro_foot_trapez2();
   translate([0, -6.5, 0])    
