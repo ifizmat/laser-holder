@@ -1,4 +1,7 @@
 
+//screw_holes();
+//cut_holder();
+//screw_hole();
 //nut_m4_hole();
 //laser();
 holder();
@@ -21,10 +24,10 @@ module cut_holder() {
     cube([20, 20, 52], center=true);
     translate([4.2, 0, 0])
     gutter2();
-    translate([-10, 0, 0])
+    translate([-5, 0, 0])
     screw_holes();
-    translate([-6, 0, 0])
-    nut_m4_hole();
+//    translate([-6, 0, 0])
+//    nut_m4_hole();
 }
 
 module gutter() {
@@ -41,13 +44,17 @@ module gutter2() {
 }
 
 module screw_holes() {
-  rotate([0, 90, 0])
-  cylinder(d=4.5, h=40, $fn=64, center=true);
+  screw_hole();
  
+}
+module screw_hole() {
+  rotate([0, 90, 0])
+  cylinder(d=4.5, h=31, $fn=64, center=true);
+  nut_m4_hole();
 }
 
 module nut_m4_hole() {
   //cylinder(d=8, h=20, $fn=64, center=true);
   rotate([0, 90, 0])
-  cylinder(d=8.2, h=21, $fn=6, center=true);
+  cylinder(d=8.2, h=18, $fn=6, center=true);
 }
