@@ -4,7 +4,12 @@ mini_holder();
 //camera_screw_hole();
 //screw_holes();
 //cut_holder();
-//screw_hole();
+//screw_hole_proof();
+//translate([20, 0, 0])
+//#screw_hole();
+//rotate([0, 90, 0])
+//cylinder(d=6.5, h=31, $fn=4, center=true);
+
 //nut_m4_hole();
 //laser();
 //holder();
@@ -63,19 +68,35 @@ module gutter2() {
 module screw_holes() {
 // up hole
   translate([-5, 0, 0])
-  screw_hole();
+  screw_hole_proof();
+//  screw_hole();
 // right hole
   translate([0, 6, 0])
   rotate([0, 0, 90])
-  screw_hole();
+  screw_hole_proof();
+//  screw_hole();
 // down hole
   translate([15, 0, 0])
-  screw_hole();
+  screw_hole_proof();
+//  screw_hole();
  
 }
+
 module screw_hole() {
   rotate([0, 90, 0])
   cylinder(d=4.5, h=31, $fn=64, center=true);
+  nut_m4_hole();
+}
+
+module screw_hole_proof() {
+  hull(){
+    translate([0, 0, 3.8])
+    rotate([0, 90, 0])
+    cylinder(d=0.5, h=31, $fn=64, center=true);
+    
+    rotate([0, 90, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+  }
   nut_m4_hole();
 }
 
