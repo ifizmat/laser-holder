@@ -1,12 +1,13 @@
-translate([-7.5, 3.3, 0])
-// https://github.com/ridercz/GoProScad
-import("M6_mount.stl");
+//translate([-7.5, 3.3, 0])
+//// https://github.com/ridercz/GoProScad
+//import("M6_mount.stl");
 
-translate([0, 6.5, 15.5])
+//translate([0, 6.5, 15.5])
 //translate([0, -10, 0])
 //gopro_foot();
 //gopro_foot_trapez();
 //gopro_foot_trapez2();
+translate([0, 6.5, 15.5])
 gopro_leg();
 
 //translate([0, 0, 15.5])
@@ -15,7 +16,11 @@ gopro_leg();
 //translate([0, 6.5, 15.5])
 //rotate([90, 0, 0])
 //cylinder(d=15, h=3.2, $fn=64, center=true);
-//mini_holder();
+//translate([0, 12, 34])
+//gopro_base();
+translate([0, 18, 68])
+rotate([0, 90, 180])
+mini_holder();
 //cut_mini_holder();
 //camera_screw_hole();
 //screw_holes();
@@ -165,7 +170,18 @@ module gopro_foot_trapez2() {
   }
 }
 
+module gopro_base() {
+  difference() {
+    cube([30, 30, 5], center=true);
+    translate([0, 6, 12])
+    rotate([0, 90, 0])
+    screw_hole_proof();
+  }
+}
+
 module gopro_leg() {
+  translate([0, 7, 17.5])
+  gopro_base();
   gopro_foot_trapez2();
   translate([0, -6.5, 0])    
   gopro_foot_trapez2();
