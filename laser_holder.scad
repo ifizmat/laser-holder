@@ -24,7 +24,6 @@ module cut_holder() {
     cube([20, 20, 52], center=true);
     translate([4.2, 0, 0])
     gutter2();
-    translate([-5, 0, 0])
     screw_holes();
 //    translate([-6, 0, 0])
 //    nut_m4_hole();
@@ -44,6 +43,15 @@ module gutter2() {
 }
 
 module screw_holes() {
+// up hole
+  translate([-5, 0, 0])
+  screw_hole();
+// right hole
+  translate([0, 6, 0])
+  rotate([0, 0, 90])
+  screw_hole();
+// down hole
+  translate([15, 0, 0])
   screw_hole();
  
 }
