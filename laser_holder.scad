@@ -9,7 +9,8 @@
 //gopro_foot_trapez2();
 //translate([0, 6.5, 15.5])
 rotate([0, -65, 0])
-gopro_leg();
+gopro_leg_m6();
+//gopro_leg();
 
 //screw_m5_hole_proof();
 
@@ -126,6 +127,7 @@ module screw_hole_proof() {
   nut_m4_hole();
 }
 
+
 module screw_m5_hole_proof() {
   hull(){
     translate([0, 0, 3.8])
@@ -134,6 +136,17 @@ module screw_m5_hole_proof() {
     
     rotate([0, 90, 0])
     cylinder(d=5.5, h=31, $fn=64, center=true);
+  }
+}
+
+module screw_m6_hole_proof() {
+  hull(){
+    translate([0, 0, 5])
+    rotate([0, 90, 0])
+    cylinder(d=0.5, h=31, $fn=64, center=true);
+    
+    rotate([0, 90, 0])
+    cylinder(d=7, h=31, $fn=64, center=true);
   }
 }
 
@@ -171,9 +184,9 @@ module gopro_foot() {
 module gopro_foot_trapez() {
   hull() {
     translate([0, 0, 15])
-    cube([30, 3.2, 1], center=true);
+    cube([30, 3, 1], center=true);
     rotate([90, 0, 0])
-    cylinder(d=15, h=3.2, $fn=64, center=true);
+    cylinder(d=15, h=2, $fn=64, center=true);
   }
 }
 
@@ -195,9 +208,27 @@ module gopro_base() {
   }
 }
 
+module gopro_base_m6() {
+  difference() {
+    cube([30, 30, 5], center=true);
+    translate([0, 6, 12])
+    rotate([0, 90, 0])
+    screw_m6_hole_proof();
+  }
+}
+
 module gopro_leg() {
   translate([0, 6.9, 17.5])
   gopro_base();
+  gopro_foot_trapez2();
+  translate([0, -6.5, 0])    
+  gopro_foot_trapez2();
+}
+
+module gopro_leg_m6() {
+  translate([0, 6.9, 17.5])
+  gopro_base_m6();
+  translate([0, -0.8, 0])    
   gopro_foot_trapez2();
   translate([0, -6.5, 0])    
   gopro_foot_trapez2();
