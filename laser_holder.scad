@@ -11,6 +11,8 @@
 rotate([0, -65, 0])
 gopro_leg();
 
+//screw_m5_hole_proof();
+
 //translate([0, 0, 15.5])
 //rotate([90, 0, 0])
 //cylinder(d=15, h=3.2, $fn=64, center=true);
@@ -124,6 +126,17 @@ module screw_hole_proof() {
   nut_m4_hole();
 }
 
+module screw_m5_hole_proof() {
+  hull(){
+    translate([0, 0, 3.8])
+    rotate([0, 90, 0])
+    cylinder(d=0.5, h=31, $fn=64, center=true);
+    
+    rotate([0, 90, 0])
+    cylinder(d=5.5, h=31, $fn=64, center=true);
+  }
+}
+
 module nut_m4_hole() {
   //cylinder(d=8, h=20, $fn=64, center=true);
   rotate([0, 90, 0])
@@ -169,7 +182,7 @@ module gopro_foot_trapez2() {
     gopro_foot_trapez();
     translate([0, -11, 0])    
     rotate([65, 0, 90])
-    screw_hole_proof();
+    screw_m5_hole_proof();
   }
 }
 
