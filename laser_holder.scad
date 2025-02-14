@@ -102,10 +102,18 @@ module cut_big_holder2() {
 }
 
 module big_screw_holes() {
-// up hole 
-  translate([-3, 0, 0])
-  translate([-5, 0, 0])
+// up hole center
+  translate([-8, 0, 0])
+ screw_hole_proof();
+
+// up hole right
+  translate([-8, 0, 16])
+ screw_hole_proof();
+
+// up hole left
+  translate([-8, 0, -16])
  #screw_hole_proof();
+
 //  screw_hole();
 // right hole
   translate([0, 6, 0])
@@ -113,7 +121,7 @@ module big_screw_holes() {
   screw_hole_proof();
 //  screw_hole();
 // down hole
-  translate([15, 0, 0])
+  translate([18, 0, 0])
   screw_hole_proof();
 //  screw_hole();
  
