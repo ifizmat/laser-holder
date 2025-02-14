@@ -8,8 +8,8 @@
 //gopro_foot_trapez();
 //gopro_foot_trapez2();
 //translate([0, 6.5, 15.5])
-rotate([0, -65, 0])
-gopro_leg_m6();
+//rotate([0, -65, 0])
+//gopro_leg_m6();
 //gopro_leg();
 
 //screw_m5_hole_proof();
@@ -39,12 +39,84 @@ gopro_leg_m6();
 
 //nut_m4_hole();
 //laser();
-//holder();
+translate([0, 0, 55])
+holder();
+
+big_holder();
+
+//translate([0, 0, 55])
+//cut_big_holder();
+//
+//cut_big_holder2();
+
 //gutter();
 //gutter2();
 
 module laser() {
   cylinder(d=9, h=65, $fn=64, center=true);
+}
+
+
+module big_holder() {
+  difference() {
+    translate([5, 5+1, 0])
+    cube([50+6, 30, 50], center=true);
+    cut_big_holder2();
+  }
+}
+
+module cut_big_holder() {
+  translate([-3, 0, 0])  
+  cube([20, 20, 52], center=true);
+  translate([4.2, 0, 0])
+  translate([3, 0, 0])  
+  gutter2();
+  translate([-3, 0, 0])
+  screw_holes();
+}
+
+module cut_big_holder2() {
+  hull() {
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+    mirror([1, 0, 0])
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+    mirror([0, 1, 0])
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+    mirror([1, 0, 0])
+    mirror([0, 1, 0])
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+
+    translate([-3, 0, 0])
+    cube([20-5/2, 20-5/2, 52], center=true);
+  }
+  translate([-3, -5/2, 0])  
+  cube([20, 20-5/2, 52], center=true);
+  translate([4.2, 0, 0])
+  translate([3, 0, 0])  
+  gutter2();
+  big_screw_holes();
+}
+
+module big_screw_holes() {
+// up hole 
+  translate([-3, 0, 0])
+  translate([-5, 0, 0])
+ #screw_hole_proof();
+//  screw_hole();
+// right hole
+  translate([0, 6, 0])
+  rotate([0, 0, 90])
+  screw_hole_proof();
+//  screw_hole();
+// down hole
+  translate([15, 0, 0])
+  screw_hole_proof();
+//  screw_hole();
+ 
 }
 
 module mini_holder() {
@@ -93,9 +165,9 @@ module gutter2() {
 }
 
 module screw_holes() {
-// up hole
+// up hole 
   translate([-5, 0, 0])
-  screw_hole_proof();
+ #screw_hole_proof();
 //  screw_hole();
 // right hole
   translate([0, 6, 0])
