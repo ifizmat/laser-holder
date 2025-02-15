@@ -47,9 +47,9 @@ gopro_leg_m6_center();
 //translate([0, 0, 55])
 //holder();
 
-//translate([0, 0, 37])
-//rotate([0, 90, 0])
-//big_holder();
+translate([-40, 0, 37])
+rotate([0, 90, 0])
+big_holder();
 
 //translate([0, 0, 55])
 //cut_big_holder();
@@ -119,7 +119,7 @@ module big_screw_holes() {
 
 // up hole left
   translate([-8, 0, -16])
- #screw_hole_proof();
+  screw_hole_proof();
 
 //  screw_hole();
 // right hole
@@ -323,10 +323,21 @@ module gopro_leg_m6() {
 
 module gopro_base_m6_center() {
   difference() {
-    cube([90, 18, 5], center=true);
+    translate([-15, 0, 0])
+    cube([90+30, 18, 5], center=true);
     translate([30, 0, 0])
     cylinder(d=7, h=31, $fn=64, center=true);
+    translate([-20, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
     translate([-30, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-40, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-50, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-60, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-70, 0, 0])
     cylinder(d=4.5, h=31, $fn=64, center=true);
   }
 }
