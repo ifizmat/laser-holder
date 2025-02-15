@@ -7,10 +7,15 @@
 //gopro_foot();
 //gopro_foot_trapez();
 //gopro_foot_trapez2();
+
 //translate([0, 6.5, 15.5])
 //rotate([0, -65, 0])
+//translate([0, 3.5, -17.5])
 //gopro_leg_m6();
 //gopro_leg();
+
+//gopro_base_m6_center();
+gopro_leg_m6_center();
 
 //screw_m5_hole_proof();
 
@@ -39,10 +44,12 @@
 
 //nut_m4_hole();
 //laser();
-translate([0, 0, 55])
-holder();
+//translate([0, 0, 55])
+//holder();
 
-big_holder();
+//translate([0, 0, 37])
+//rotate([0, 90, 0])
+//big_holder();
 
 //translate([0, 0, 55])
 //cut_big_holder();
@@ -274,7 +281,7 @@ module gopro_foot_trapez2() {
   difference() {
     gopro_foot_trapez();
     translate([0, -11, 0])    
-    rotate([65, 0, 90])
+    rotate([180, 0, 90])
     screw_m5_hole_proof();
   }
 }
@@ -311,5 +318,25 @@ module gopro_leg_m6() {
   translate([0, -0.8, 0])    
   gopro_foot_trapez2();
   translate([0, -6.5, 0])    
+  gopro_foot_trapez2();
+}
+
+module gopro_base_m6_center() {
+  difference() {
+    cube([90, 18, 5], center=true);
+    translate([30, 0, 0])
+    cylinder(d=7, h=31, $fn=64, center=true);
+    translate([-30, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+  }
+}
+
+module gopro_leg_m6_center() {
+  gopro_base_m6_center();
+//  translate([-10, -2.9, -17.8])
+  translate([0, -2.9, -17.8])
+  gopro_foot_trapez2();
+//  translate([-10, -2.9, -17.8])
+  translate([0, 2.9, -17.8])
   gopro_foot_trapez2();
 }
