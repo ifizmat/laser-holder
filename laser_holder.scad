@@ -61,10 +61,61 @@
 //gutter2();
 
 //gopro_foot_trapez2();
-gopro_foot_trapez_mini2();
+//gopro_foot_trapez_mini2();
+translate([0, 0, -5])
+gopro_leg_m6_center_mini();
+//translate([0, 0, -5])
+//gopro_base_m6_center();
+//gopro_base_m6_center_mini();
 
 module laser() {
   cylinder(d=9, h=65, $fn=64, center=true);
+}
+
+module gopro_base_m6_center_mini() {
+  difference() {
+    translate([-15, 0, 0])
+    
+    hull() {
+      translate([(90+30-5)/2, (18-5)/2, 0])
+      cylinder(d=5, h=5, $fn=64, center=true);
+      mirror([1, 0, 0])
+      translate([(90+30-5)/2, (18-5)/2, 0])
+      cylinder(d=5, h=5, $fn=64, center=true);
+      mirror([0, 1, 0])
+      translate([(90+30-5)/2, (18-5)/2, 0])
+      cylinder(d=5, h=5, $fn=64, center=true);
+      mirror([1, 0, 0])
+      mirror([0, 1, 0])
+      translate([(90+30-5)/2, (18-5)/2, 0])
+      cylinder(d=5, h=5, $fn=64, center=true);
+      
+      cube([90+30-5, 18-5, 5], center=true);
+    }
+    
+    translate([30, 0, 0])
+    cylinder(d=7, h=31, $fn=64, center=true);
+    translate([-20, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-30, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-40, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-50, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-60, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+    translate([-70, 0, 0])
+    cylinder(d=4.5, h=31, $fn=64, center=true);
+  }
+}
+
+module gopro_leg_m6_center_mini() {
+  gopro_base_m6_center_mini();
+  translate([0, -3.3, 10])
+  gopro_foot_trapez_mini2();
+  translate([0, 3.3, 10])
+  gopro_foot_trapez_mini2();
 }
 
 module gopro_foot_trapez_mini() {
