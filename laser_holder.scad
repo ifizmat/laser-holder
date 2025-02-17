@@ -15,7 +15,8 @@
 //gopro_leg();
 
 //gopro_base_m6_center();
-gopro_leg_m6_center();
+//rotate([180, 0, 0])
+//gopro_leg_m6_center();
 
 //screw_m5_hole_proof();
 
@@ -38,7 +39,7 @@ gopro_leg_m6_center();
 //cut_holder();
 //screw_hole_proof();
 //translate([20, 0, 0])
-//#screw_hole();
+//screw_hole();
 //rotate([0, 90, 0])
 //cylinder(d=6.5, h=31, $fn=4, center=true);
 
@@ -47,9 +48,9 @@ gopro_leg_m6_center();
 //translate([0, 0, 55])
 //holder();
 
-translate([-40, 0, 37])
-rotate([0, 90, 0])
-big_holder();
+//translate([-40, 0, 37])
+//rotate([0, 90, 0])
+//big_holder();
 
 //translate([0, 0, 55])
 //cut_big_holder();
@@ -59,10 +60,30 @@ big_holder();
 //gutter();
 //gutter2();
 
+//gopro_foot_trapez2();
+gopro_foot_trapez_mini2();
+
 module laser() {
   cylinder(d=9, h=65, $fn=64, center=true);
 }
 
+module gopro_foot_trapez_mini() {
+  hull() {
+    translate([0, 0, -7])
+    cube([17, 3.5, 1], center=true);
+    rotate([90, 0, 0])
+    cylinder(d=13, h=2.5, $fn=64, center=true);
+  }
+}
+
+module gopro_foot_trapez_mini2() {
+  difference() {
+    gopro_foot_trapez_mini();
+    translate([0, -11, 0])    
+    rotate([0, 0, 90])
+    screw_m5_hole_proof();
+  }
+}
 
 module big_holder() {
   difference() {
