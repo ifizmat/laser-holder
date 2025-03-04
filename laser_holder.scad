@@ -1,6 +1,6 @@
-//translate([-7.5, 3.3, 0])
+translate([-7.5, 0.1, -26])
 //// https://github.com/ridercz/GoProScad
-//import("M6_mount.stl");
+import("M6_mount.stl");
 
 //translate([0, 6.5, 15.5])
 //translate([0, -10, 0])
@@ -67,14 +67,51 @@
 //gopro_leg_m6_center_mini();
 
 //test_gopro_base_m6_center_mini();
-test_gopro_leg_m6_center_mini();
+//test_gopro_leg_m6_center_mini();
 
 //translate([0, 0, -5])
 //gopro_base_m6_center();
 //gopro_base_m6_center_mini();
 
+//translate([-40, 0, 37])
+//rotate([0, 90, 0])
+//big_holder();
+
+general_view();
+
+module general_view() {
+  color("gray")
+  translate([0, -1, 31])
+  rotate([0, 90, 0])
+  laser();
+  translate([0, 0, 37])
+  rotate([0, 90, 0])
+  big_holder();
+  translate([0, 0, 0])
+  rotate([0, 180, 0])
+  gopro_leg_m6_center_mini();
+}
+
+module big_holder() {
+  difference() {
+    translate([5, 5+1, 0])
+    cube([50+6, 30, 50], center=true);
+    cut_big_holder2();
+  }
+}
+
+module cut_big_holder() {
+  translate([-3, 0, 0])  
+  cube([20, 20, 52], center=true);
+  translate([4.2, 0, 0])
+  translate([3, 0, 0])  
+  gutter2();
+  translate([-3, 0, 0])
+  screw_holes();
+}
+
 module laser() {
-  cylinder(d=9, h=65, $fn=64, center=true);
+  cylinder(d=18, h=65, $fn=64, center=true);
 }
 
 module test_gopro_leg_m6_center_mini() {
@@ -177,23 +214,6 @@ module gopro_foot_trapez_mini2() {
   }
 }
 
-module big_holder() {
-  difference() {
-    translate([5, 5+1, 0])
-    cube([50+6, 30, 50], center=true);
-    cut_big_holder2();
-  }
-}
-
-module cut_big_holder() {
-  translate([-3, 0, 0])  
-  cube([20, 20, 52], center=true);
-  translate([4.2, 0, 0])
-  translate([3, 0, 0])  
-  gutter2();
-  translate([-3, 0, 0])
-  screw_holes();
-}
 
 module cut_big_holder2() {
   hull() {
