@@ -1,6 +1,6 @@
-translate([-7.5, 0.1, -26])
+//translate([-7.5, 0.1, -26])
 //// https://github.com/ridercz/GoProScad
-import("M6_mount.stl");
+//import("M6_mount.stl");
 
 //translate([0, 6.5, 15.5])
 //translate([0, -10, 0])
@@ -75,9 +75,34 @@ import("M6_mount.stl");
 
 //translate([-40, 0, 37])
 //rotate([0, 90, 0])
-//big_holder();
+big_holder();
+//round_block();
 
-general_view();
+//cut_big_holder2();
+//general_view();
+
+module round_block() {
+  ro = 8;
+  hull() {
+    cube([50+6-ro, 30-ro, 50], center=true);
+    translate([(50+6)/2-ro/2, 30/2-ro/2, 0])
+    cylinder(d=8, h=50, $fn=64, center=true);
+    mirror([1, 0, 0])
+    translate([(50+6)/2-ro/2, 30/2-ro/2, 0])
+    cylinder(d=8, h=50, $fn=64, center=true);
+    mirror([0, 1, 0])
+    translate([(50+6)/2-ro/2, 30/2-ro/2, 0])
+    cylinder(d=8, h=50, $fn=64, center=true);
+    mirror([1, 0, 0])
+    mirror([0, 1, 0])
+    translate([(50+6)/2-ro/2, 30/2-ro/2, 0])
+    cylinder(d=8, h=50, $fn=64, center=true);
+  }
+   //test size
+//   translate([0, 0, -30])
+//   cube([50+6, 30, 5], center=true);
+  
+}
 
 module general_view() {
   color("gray")
@@ -95,7 +120,8 @@ module general_view() {
 module big_holder() {
   difference() {
     translate([5, 5+1, 0])
-    cube([50+6, 30, 50], center=true);
+    //cube([50+6, 30, 50], center=true);
+    round_block();
     cut_big_holder2();
   }
 }
@@ -260,9 +286,19 @@ module big_screw_holes() {
   rotate([0, 0, 90])
   screw_hole_proof();
 //  screw_hole();
-// down hole
+
+// down hole center
   translate([18, 0, 0])
   screw_hole_proof();
+
+// down hole right
+  translate([18, 0, 16])
+  screw_hole_proof();
+
+// down hole left
+  translate([18, 0, -16])
+  screw_hole_proof();
+
 //  screw_hole();
  
 }
