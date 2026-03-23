@@ -76,10 +76,79 @@
 //translate([-40, 0, 37])
 //rotate([0, 90, 0])
 big_holder();
+
+
+//cut_big_holder2();
+//hole_strong_block_set();
 //round_block();
 
 //cut_big_holder2();
 //general_view();
+
+module hole_strong_block_set() {
+  hole_strong_block();
+  translate([0, 0, -16])
+  hole_strong_block();
+  translate([0, 0, 16])
+  hole_strong_block();
+}
+
+module hole_strong_block() {
+  translate([0, 14, 0])
+  screw_hole_proof2();
+  translate([0, 14, 0])
+  screw_hole_proof2();
+  translate([37, 14, 0])
+  nut_m4_hole();
+}
+
+
+module big_holder() {
+  difference() {
+    translate([5, 5+1, 0])
+    //cube([50+6, 30, 50], center=true);
+    round_block();
+    cut_big_holder2();
+  }
+}
+
+module cut_big_holder2() {
+  hull() {
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+    mirror([1, 0, 0])
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+    mirror([0, 1, 0])
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+    mirror([1, 0, 0])
+    mirror([0, 1, 0])
+    translate([-10-3+5/2, 10-5/2, 0])
+    cylinder(d=5, h=52, $fn=64, center=true);
+
+    translate([-3, 0, 0])
+    cube([20-5/2, 20-5/2, 52], center=true);
+  }
+  translate([-3, -5/2, 0])  
+  cube([20, 20-5/2, 52], center=true);
+  translate([4.2, 0, 0])
+  translate([3, 0, 0])  
+  gutter2();
+  big_screw_holes();
+  hole_strong_block_set();
+}
+
+module screw_hole_proof2() {
+  hull(){
+    translate([0, 0, 3.8])
+    rotate([0, 90, 0])
+    cylinder(d=0.5, h=81, $fn=64, center=true);
+    
+    rotate([0, 90, 0])
+    cylinder(d=4.5, h=81, $fn=64, center=true);
+  }
+}
 
 module round_block() {
   ro = 8;
@@ -117,14 +186,6 @@ module general_view() {
   gopro_leg_m6_center_mini();
 }
 
-module big_holder() {
-  difference() {
-    translate([5, 5+1, 0])
-    //cube([50+6, 30, 50], center=true);
-    round_block();
-    cut_big_holder2();
-  }
-}
 
 module cut_big_holder() {
   translate([-3, 0, 0])  
@@ -241,31 +302,6 @@ module gopro_foot_trapez_mini2() {
 }
 
 
-module cut_big_holder2() {
-  hull() {
-    translate([-10-3+5/2, 10-5/2, 0])
-    cylinder(d=5, h=52, $fn=64, center=true);
-    mirror([1, 0, 0])
-    translate([-10-3+5/2, 10-5/2, 0])
-    cylinder(d=5, h=52, $fn=64, center=true);
-    mirror([0, 1, 0])
-    translate([-10-3+5/2, 10-5/2, 0])
-    cylinder(d=5, h=52, $fn=64, center=true);
-    mirror([1, 0, 0])
-    mirror([0, 1, 0])
-    translate([-10-3+5/2, 10-5/2, 0])
-    cylinder(d=5, h=52, $fn=64, center=true);
-
-    translate([-3, 0, 0])
-    cube([20-5/2, 20-5/2, 52], center=true);
-  }
-  translate([-3, -5/2, 0])  
-  cube([20, 20-5/2, 52], center=true);
-  translate([4.2, 0, 0])
-  translate([3, 0, 0])  
-  gutter2();
-  big_screw_holes();
-}
 
 module big_screw_holes() {
 // up hole center
