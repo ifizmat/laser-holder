@@ -76,7 +76,17 @@
 //translate([-40, 0, 37])
 //rotate([0, 90, 0])
 big_holder();
+// gutter_triangle
 
+
+gutter_triangle_points = [
+  [0, 0],
+  [-10, 5],
+  [10, 5]
+
+];
+rotate([0, 0, 90])
+polygon(gutter_triangle_points, center=true);
 
 //cut_big_holder2();
 //hole_strong_block_set();
