@@ -73,20 +73,39 @@
 //gopro_base_m6_center();
 //gopro_base_m6_center_mini();
 
-//translate([-40, 0, 37])
-//rotate([0, 90, 0])
+translate([0, 0, -27])
+rotate([0, 0, -90])
 big_holder();
 // gutter_triangle
 
 
-gutter_triangle_points = [
-  [0, 0],
-  [-10, 5],
-  [10, 5]
+big_holder_points = [
+  [21, 23],
+  [21, -33],
+  [-9, -33],
+  [-9, -13.5],
+  [0, -18.5],
+  [10, -12.5],
+  [10, 13],
+  [-9, 13],
+  [-9, 23]
 
 ];
-rotate([0, 0, 90])
-polygon(gutter_triangle_points, center=true);
+color("red")
+rotate([0, 0, 0])
+polygon(big_holder_points, center=true);
+
+laser_hole_points = [
+  [10, 13],
+  [-9, 13],
+  [-9, -13.5],
+  [0, -18.5],
+  [10, -12.5],
+];
+
+color("green")
+rotate([0, 0, 0])
+polygon(laser_hole_points, center=true);
 
 //cut_big_holder2();
 //hole_strong_block_set();
