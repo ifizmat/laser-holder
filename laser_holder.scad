@@ -1,4 +1,4 @@
-d_round_corners = 5; // diameter
+r_round_corners = 2; // radius
 //translate([-7.5, 0.1, -26])
 //// https://github.com/ridercz/GoProScad
 //import("M6_mount.stl");
@@ -35,9 +35,12 @@ laser_hole_points = [
 //translate([0, 0, -27])
 //rotate([0, 0, -90])
 //big_holder();
-//big_holder_template();
+offset(r=r_round_corners, $fn=32)
+big_holder_template();
+color("red")
+big_holder_template();
 //disks_points();
-laser_hole_template();
+//laser_hole_template();
 
 module disks_points() {
   for (point=big_holder_points) {
