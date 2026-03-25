@@ -77,35 +77,40 @@ translate([0, 0, -27])
 rotate([0, 0, -90])
 big_holder();
 // gutter_triangle
+big_holder_template();
+laser_holder_template();
 
+module big_holder_template() {
+  big_holder_points = [
+    [21, 23],
+    [21, -33],
+    [-9, -33],
+    [-9, -13.5],
+    [0, -18.5],
+    [10, -12.5],
+    [10, 13],
+    [-9, 13],
+    [-9, 23]
+  
+  ];
+  color("red")
+  rotate([0, 0, 0])
+  polygon(big_holder_points, center=true);
+}
 
-big_holder_points = [
-  [21, 23],
-  [21, -33],
-  [-9, -33],
-  [-9, -13.5],
-  [0, -18.5],
-  [10, -12.5],
-  [10, 13],
-  [-9, 13],
-  [-9, 23]
-
-];
-color("red")
-rotate([0, 0, 0])
-polygon(big_holder_points, center=true);
-
-laser_hole_points = [
-  [10, 13],
-  [-9, 13],
-  [-9, -13.5],
-  [0, -18.5],
-  [10, -12.5],
-];
-
-color("green")
-rotate([0, 0, 0])
-polygon(laser_hole_points, center=true);
+module laser_holder_template() {
+  laser_hole_points = [
+    [10, 13],
+    [-9, 13],
+    [-9, -13.5],
+    [0, -18.5],
+    [10, -12.5],
+  ];
+  
+  color("green")
+  rotate([0, 0, 0])
+  polygon(laser_hole_points, center=true);
+}
 
 //cut_big_holder2();
 //hole_strong_block_set();
