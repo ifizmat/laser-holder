@@ -12,7 +12,7 @@ point6 = [10, -12.5];
 point7 = [10, 13];
 point8 = [-9, 13];
 point9 = [-9, 23];
-list_points = [
+big_holder_points = [
   point1,
   point2,
   point3,
@@ -24,16 +24,23 @@ list_points = [
   point9,
 ];
 
+laser_hole_points = [
+  point7,
+  point8,
+  point4,
+  point5,
+  point6,
+];
 
 //translate([0, 0, -27])
 //rotate([0, 0, -90])
 //big_holder();
-big_holder_template();
-disks_points();
-//laser_holder_template();
+//big_holder_template();
+//disks_points();
+laser_hole_template();
 
 module disks_points() {
-  for (point=list_points) {
+  for (point=big_holder_points) {
     echo(point);
     translate(point)
     circle(d=d_round_corners, $fn=32);
@@ -41,24 +48,15 @@ module disks_points() {
 }
 
 module big_holder_template() {
-  big_holder_points = list_points;
   color("red")
   rotate([0, 0, 0])
   polygon(big_holder_points);
 }
 
-module laser_holder_template() {
-  laser_hole_points = [
-    [10, 13],
-    [-9, 13],
-    [-9, -13.5],
-    [0, -18.5],
-    [10, -12.5],
-  ];
-  
+module laser_hole_template() {
   color("green")
   rotate([0, 0, 0])
-  polygon(laser_hole_points, center=true);
+  polygon(laser_hole_points);
 }
 
 //cut_big_holder2();
