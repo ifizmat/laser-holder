@@ -1,101 +1,59 @@
+d_round_corners = 5; // diameter
 //translate([-7.5, 0.1, -26])
 //// https://github.com/ridercz/GoProScad
 //import("M6_mount.stl");
 
-//translate([0, 6.5, 15.5])
-//translate([0, -10, 0])
-//gopro_foot();
-//gopro_foot_trapez();
-//gopro_foot_trapez2();
+point1 = [21, 23];
+point2 = [21, -33];
+point3 = [-9, -33];
+point4 = [-9, -13.5];
+point5 = [0, -18.5];
+point6 = [10, -12.5];
+point7 = [10, 13];
+point8 = [-9, 13];
+point9 = [-9, 23];
 
-//translate([0, 6.5, 15.5])
-//rotate([0, -65, 0])
-//translate([0, 3.5, -17.5])
-//gopro_leg_m6();
-//gopro_leg();
-
-//gopro_base_m6_center();
-//rotate([180, 0, 0])
-//gopro_leg_m6_center();
-
-//screw_m5_hole_proof();
-
-//translate([0, 0, 15.5])
-//rotate([90, 0, 0])
-//cylinder(d=15, h=3.2, $fn=64, center=true);
-//translate([0, 6.5, 15.5])
-//rotate([90, 0, 0])
-//cylinder(d=15, h=3.2, $fn=64, center=true);
-//translate([0, 12, 34])
-//gopro_base();
-
-//translate([0, 18, 68])
-//rotate([0, 90, 180])
-//mini_holder();
-
-//cut_mini_holder();
-//camera_screw_hole();
-//screw_holes();
-//cut_holder();
-//screw_hole_proof();
-//translate([20, 0, 0])
-//screw_hole();
-//rotate([0, 90, 0])
-//cylinder(d=6.5, h=31, $fn=4, center=true);
-
-//nut_m4_hole();
-//laser();
-//translate([0, 0, 55])
-//holder();
-
-//translate([-40, 0, 37])
-//rotate([0, 90, 0])
+//translate([0, 0, -27])
+//rotate([0, 0, -90])
 //big_holder();
-
-//translate([0, 0, 55])
-//cut_big_holder();
-//
-//cut_big_holder2();
-
-//gutter();
-//gutter2();
-
-//gopro_foot_trapez2();
-//gopro_foot_trapez_mini2();
-
-//translate([0, 0, -5])
-//gopro_leg_m6_center_mini();
-
-//test_gopro_base_m6_center_mini();
-//test_gopro_leg_m6_center_mini();
-
-//translate([0, 0, -5])
-//gopro_base_m6_center();
-//gopro_base_m6_center_mini();
-
-translate([0, 0, -27])
-rotate([0, 0, -90])
-big_holder();
 // gutter_triangle
 big_holder_template();
-laser_holder_template();
+//laser_holder_template();
+translate(point1)
+circle(d=d_round_corners, $fn=32);
+translate(point2)
+circle(d=d_round_corners, $fn=32);
+translate(point3)
+circle(d=d_round_corners, $fn=32);
+translate(point4)
+circle(d=d_round_corners, $fn=32);
+translate(point5)
+circle(d=d_round_corners, $fn=32);
+translate(point6)
+circle(d=d_round_corners, $fn=32);
+translate(point7)
+circle(d=d_round_corners, $fn=32);
+translate(point8)
+circle(d=d_round_corners, $fn=32);
+translate(point9)
+circle(d=d_round_corners, $fn=32);
+
 
 module big_holder_template() {
   big_holder_points = [
-    [21, 23],
-    [21, -33],
-    [-9, -33],
-    [-9, -13.5],
-    [0, -18.5],
-    [10, -12.5],
-    [10, 13],
-    [-9, 13],
-    [-9, 23]
-  
+    point1,
+    point2,
+    point3,
+    point4,
+    point5,
+    point6,
+    point7,
+    point8,
+    point9
   ];
   color("red")
   rotate([0, 0, 0])
-  polygon(big_holder_points, center=true);
+  polygon(big_holder_points);
 }
 
 module laser_holder_template() {
@@ -590,3 +548,74 @@ module gopro_leg_m6_center() {
   translate([0, 2.9, -17.8])
   gopro_foot_trapez2();
 }
+
+//translate([0, 6.5, 15.5])
+//translate([0, -10, 0])
+//gopro_foot();
+//gopro_foot_trapez();
+//gopro_foot_trapez2();
+
+//translate([0, 6.5, 15.5])
+//rotate([0, -65, 0])
+//translate([0, 3.5, -17.5])
+//gopro_leg_m6();
+//gopro_leg();
+
+//gopro_base_m6_center();
+//rotate([180, 0, 0])
+//gopro_leg_m6_center();
+
+//screw_m5_hole_proof();
+
+//translate([0, 0, 15.5])
+//rotate([90, 0, 0])
+//cylinder(d=15, h=3.2, $fn=64, center=true);
+//translate([0, 6.5, 15.5])
+//rotate([90, 0, 0])
+//cylinder(d=15, h=3.2, $fn=64, center=true);
+//translate([0, 12, 34])
+//gopro_base();
+
+//translate([0, 18, 68])
+//rotate([0, 90, 180])
+//mini_holder();
+
+//cut_mini_holder();
+//camera_screw_hole();
+//screw_holes();
+//cut_holder();
+//screw_hole_proof();
+//translate([20, 0, 0])
+//screw_hole();
+//rotate([0, 90, 0])
+//cylinder(d=6.5, h=31, $fn=4, center=true);
+
+//nut_m4_hole();
+//laser();
+//translate([0, 0, 55])
+//holder();
+
+//translate([-40, 0, 37])
+//rotate([0, 90, 0])
+//big_holder();
+
+//translate([0, 0, 55])
+//cut_big_holder();
+//
+//cut_big_holder2();
+
+//gutter();
+//gutter2();
+
+//gopro_foot_trapez2();
+//gopro_foot_trapez_mini2();
+
+//translate([0, 0, -5])
+//gopro_leg_m6_center_mini();
+
+//test_gopro_base_m6_center_mini();
+//test_gopro_leg_m6_center_mini();
+
+//translate([0, 0, -5])
+//gopro_base_m6_center();
+//gopro_base_m6_center_mini();
