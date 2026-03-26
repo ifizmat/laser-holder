@@ -71,7 +71,10 @@ color("orange")
 offset(r=r_round_corners, $fn=32)
 big_holder_template_round();
 //disks_points();
-//laser_hole_template();
+color("lime")
+translate([0, 0, 3])
+offset(r=r_round_corners, $fn=32)
+laser_hole_template();
 //translate([0, 0, 6])
 //color("blue")
 //disks_points_offset();
