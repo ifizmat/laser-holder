@@ -81,15 +81,25 @@ solid_plate_points_round = [
 //color("red")
 //solid_plate_round();
 
-translate([0, 0, -5])
-color("pink")
-big_holder_template();
+//translate([0, 0, -5])
+//color("pink")
+//big_holder_template();
+//
+//disks_points_hole();
+//
+//translate([0, 0, 3])
+//#offset(r=r_round_corners, $fn=32)
+//laser_hole_template_round();
 
-disks_points_hole();
+template_round();
 
-translate([0, 0, 3])
-#offset(r=r_round_corners, $fn=32)
-laser_hole_template_round();
+module template_round() {
+  difference() {
+    translate([0.1, 0, 0])
+    solid_plate_round();
+    laser_hole_template_round();
+  }
+}
 
 module disks_points_hole() {
   for (point=laser_hole_points_round) {
@@ -101,7 +111,7 @@ module disks_points_hole() {
 
 module laser_hole_template_round() {
   color("green")
-  rotate([0, 0, 0])
+  offset(r=r_round_corners, $fn=32)
   polygon(laser_hole_points_round);
 }
 
