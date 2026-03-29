@@ -1,7 +1,19 @@
 r_round_corners = 5;//4.5;// radius
 
-point1 = [21, 23];
-point2 = [21, -33];
+/*
+    left     right
+       _______ 
+proof |       |
+ceil   -----  |
+            | |
+            | |
+floor |\   /  |
+      | \ /   |
+      |_______|
+foot
+*/
+point_proof_right = [21, 23];
+point_foot_right = [21, -33];
 point3 = [-9-1, -33];
 point4 = [-9-1, -13.5];
 point5 = [0, -18.5];
@@ -10,8 +22,8 @@ point7 = [10, 13];
 point8 = [-9-1, 13];
 point9 = [-9-1, 23];
 
-point1offset = [point1[0]-r_round_corners, point1[1]-r_round_corners];
-point2offset = [point2[0]-r_round_corners, point2[1]+r_round_corners];
+point_proof_right_offset = [point_proof_right[0]-r_round_corners, point_proof_right[1]-r_round_corners];
+point_foot_right_offset = [point_foot_right[0]-r_round_corners, point_foot_right[1]+r_round_corners];
 point3offset = [point3[0]+r_round_corners, point3[1]+r_round_corners];
 point4offset = [point4[0]+r_round_corners, point4[1]+r_round_corners-2];
 point5offset = [point5[0], point5[1]+r_round_corners];
@@ -22,8 +34,8 @@ point9offset = [point9[0]+r_round_corners, point9[1]-r_round_corners];
 
 
 big_holder_points_round = [
-  point1offset,
-  point2offset,
+  point_proof_right_offset,
+  point_foot_right_offset,
   point3offset,
   point4offset, 
   point5offset,
@@ -34,8 +46,8 @@ big_holder_points_round = [
 ];
 
 big_holder_points = [
-  point1,
-  point2,
+  point_proof_right  ,
+  point_foot_right,
   point3,
   point4,
   point5,
@@ -62,15 +74,15 @@ laser_hole_points_round = [
 ];
 
 solid_plate_points = [
-  point1,
-  point2,
+  point_proof_right,
+  point_foot_right,
   point3,
   point9,
 ];
 
 solid_plate_points_round = [
-  point1offset,
-  point2offset,
+  point_proof_right_offset,
+  point_foot_right_offset,
   point3offset,
   point9offset,
 ];
