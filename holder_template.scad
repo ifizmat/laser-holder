@@ -81,11 +81,24 @@ solid_plate_points = [
 ];
 
 solid_plate_points_round = [
+  point_proof_left_offset,
   point_proof_right_offset,
   point_foot_right_offset,
   point_foot_left_offset,
-  point_proof_left_offset,
 ];
+
+left_proof_points_round = [
+  point_proof_left_offset,
+  point_proof_right_offset,
+  [point_ceil_left_offset[0],
+  point_ceil_left_offset[1]+9.5],
+  [point_ceil_right_offset[0],
+  point_ceil_right_offset[1]+9.5],
+];
+
+translate([0, 0, 2])
+#offset(r=r_round_corners, $fn=32)
+polygon(left_proof_points_round);
 
 //translate([0, 0, -2])
 //solid_plate();
