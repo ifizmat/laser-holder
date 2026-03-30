@@ -11,6 +11,7 @@ floor |\   /  |
       | \ /   |
       |_______|
 foot
+right hole for nut 10 mm
 */
 point_proof_left = [-10, 23];
 point_proof_right = [21, 23];
@@ -96,9 +97,32 @@ left_proof_points_round = [
   point_ceil_right_offset[1]+9.5],
 ];
 
-translate([0, 0, 2])
-#offset(r=r_round_corners, $fn=32)
-polygon(left_proof_points_round);
+left_floor_points = [
+  [point_foot_left[0]+2,
+  point_foot_left[1]+4.5],
+  [point_floor_left[0]+2,
+  point_floor_left[1]-3],
+  [point_floor_middle[0],
+   point_floor_middle[1]-3],
+  point_foot_right_offset
+];
+
+template_set();
+
+module template_set() {
+  union() {
+    template_round();
+    
+    translate([0, 0, 0])
+    offset(r=r_round_corners, $fn=32)
+    polygon(left_proof_points_round);
+    
+    translate([0, 1, 0])
+    offset(r=2, $fn=32)
+    polygon(left_floor_points);
+    
+  }
+}
 
 //translate([0, 0, -2])
 //solid_plate();
@@ -116,13 +140,15 @@ polygon(left_proof_points_round);
 //#offset(r=r_round_corners, $fn=32)
 //laser_hole_template_round();
 
-template_round();
+
 
 module template_round() {
   difference() {
     translate([0.1, 0, 0])
     solid_plate_round();
     laser_hole_template_round();
+    translate([-10, 0])
+    square([20, 55], center=true);
   }
 }
 
