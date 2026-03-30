@@ -1,16 +1,31 @@
 //translate([-7.5, 0.1, -26])
 //// https://github.com/ridercz/GoProScad
 //import("M6_mount.stl");
+use <holder_template.scad>
 
+length_holder = 56;
 
 
 
 //cut_big_holder2();
-//hole_strong_block_set();
+difference() {
+    rotate([0, 0, 90])
+    big_holder_round();
+    hole_strong_block_set();
+    translate([-5, 0, 0])
+    hole_strong_block_set();
+    big_screw_holes();
+}
 //round_block();
 
 //cut_big_holder2();
-general_view();
+//general_view();
+
+
+module big_holder_round() {
+    linear_extrude(length_holder, center=true)
+    template_set();
+}
 
 module hole_strong_block_set() {
   hole_strong_block();
