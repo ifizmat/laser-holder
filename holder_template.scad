@@ -12,79 +12,79 @@ floor |\   /  |
       |_______|
 foot
 */
+point_proof_left = [-10, 23];
 point_proof_right = [21, 23];
+point_foot_left = [-10, -33];
 point_foot_right = [21, -33];
-point3 = [-9-1, -33];
-point4 = [-9-1, -13.5];
-point5 = [0, -18.5];
-point6 = [10, -12.5];
-point7 = [10, 13];
-point8 = [-9-1, 13];
-point9 = [-9-1, 23];
+point_floor_left = [-10, -13.5];
+point_floor_middle = [0, -18.5];
+point_floor_right = [10, -12.5];
+point_ceil_left = [-10, 13];
+point_ceil_right = [10, 13];
 
 point_proof_right_offset = [point_proof_right[0]-r_round_corners, point_proof_right[1]-r_round_corners];
 point_foot_right_offset = [point_foot_right[0]-r_round_corners, point_foot_right[1]+r_round_corners];
-point3offset = [point3[0]+r_round_corners, point3[1]+r_round_corners];
-point4offset = [point4[0]+r_round_corners, point4[1]+r_round_corners-2];
-point5offset = [point5[0], point5[1]+r_round_corners];
-point6offset = [point6[0]-r_round_corners, point6[1]+r_round_corners-3];
-point7offset = [point7[0]-r_round_corners, point7[1]-r_round_corners];
-point8offset = [point8[0]+r_round_corners, point8[1]-r_round_corners];
-point9offset = [point9[0]+r_round_corners, point9[1]-r_round_corners];
+point_foot_left_offset = [point_foot_left[0]+r_round_corners, point_foot_left[1]+r_round_corners];
+point_floor_left_offset = [point_floor_left[0]+r_round_corners, point_floor_left[1]+r_round_corners-2];
+point_floor_middle_offset = [point_floor_middle[0], point_floor_middle[1]+r_round_corners];
+point_floor_rightoffset = [point_floor_right[0]-r_round_corners, point_floor_right[1]+r_round_corners-3];
+point_ceil_right_offset = [point_ceil_right[0]-r_round_corners, point_ceil_right[1]-r_round_corners];
+point_ceil_left_offset = [point_ceil_left[0]+r_round_corners, point_ceil_left[1]-r_round_corners];
+point_proof_left_offset = [point_proof_left[0]+r_round_corners, point_proof_left[1]-r_round_corners];
 
 
 big_holder_points_round = [
   point_proof_right_offset,
   point_foot_right_offset,
-  point3offset,
-  point4offset, 
-  point5offset,
-  point6offset,
-  point7offset,
-  point8offset,
-  point9offset,
+  point_foot_left_offset,
+  point_floor_left_offset, 
+  point_floor_middle_offset,
+  point_floor_rightoffset,
+  point_ceil_right_offset,
+  point_ceil_left_offset,
+  point_proof_left_offset,
 ];
 
 big_holder_points = [
   point_proof_right  ,
   point_foot_right,
-  point3,
-  point4,
-  point5,
-  point6,
-  point7,
-  point8,
-  point9,
+  point_foot_left,
+  point_floor_left,
+  point_floor_middle,
+  point_floor_right,
+  point_ceil_right,
+  point_ceil_left,
+  point_proof_left,
 ];
 
 laser_hole_points = [
-  point7,
-  point8,
-  point4,
-  point5,
-  point6,
+  point_ceil_right,
+  point_ceil_left,
+  point_floor_left,
+  point_floor_middle,
+  point_floor_right,
 ];
 
 laser_hole_points_round = [
-  point4offset, 
-  point5offset,
-  point6offset,
-  point7offset,
-  point8offset,
+  point_floor_left_offset, 
+  point_floor_middle_offset,
+  point_floor_rightoffset,
+  point_ceil_right_offset,
+  point_ceil_left_offset,
 ];
 
 solid_plate_points = [
   point_proof_right,
   point_foot_right,
-  point3,
-  point9,
+  point_foot_left,
+  point_proof_left,
 ];
 
 solid_plate_points_round = [
   point_proof_right_offset,
   point_foot_right_offset,
-  point3offset,
-  point9offset,
+  point_foot_left_offset,
+  point_proof_left_offset,
 ];
 
 //translate([0, 0, -2])
