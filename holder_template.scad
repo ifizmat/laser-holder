@@ -1,4 +1,4 @@
-r_round_corners = 5;//4.5;// radius
+r_round_corners = 3;//4.5;// radius
 
 /*
     left     right
@@ -17,21 +17,27 @@ point_proof_left = [-10, 23];
 point_proof_right = [21, 23];
 point_foot_left = [-10, -33];
 point_foot_right = [21, -33];
-point_floor_left = [-10, -13.5];
-point_floor_middle = [0, -18.5];
-point_floor_right = [10, -12.5];
+point_floor_left = [-10, -13.5-3];
+point_floor_middle = [0, -18.5-3];
+point_floor_right = [10, -12.5-3];
 point_ceil_left = [-10, 13];
 point_ceil_right = [10, 13];
 
+
+
+point_proof_left_offset = [point_proof_left[0]+r_round_corners, point_proof_left[1]-r_round_corners];
 point_proof_right_offset = [point_proof_right[0]-r_round_corners, point_proof_right[1]-r_round_corners];
+
 point_foot_right_offset = [point_foot_right[0]-r_round_corners, point_foot_right[1]+r_round_corners];
 point_foot_left_offset = [point_foot_left[0]+r_round_corners, point_foot_left[1]+r_round_corners];
+
 point_floor_left_offset = [point_floor_left[0]+r_round_corners, point_floor_left[1]+r_round_corners-2];
 point_floor_middle_offset = [point_floor_middle[0], point_floor_middle[1]+r_round_corners];
-point_floor_rightoffset = [point_floor_right[0]-r_round_corners, point_floor_right[1]+r_round_corners-3];
+point_floor_right_offset = [point_floor_right[0]-r_round_corners, point_floor_right[1]+r_round_corners-3];
+
 point_ceil_right_offset = [point_ceil_right[0]-r_round_corners, point_ceil_right[1]-r_round_corners];
 point_ceil_left_offset = [point_ceil_left[0]+r_round_corners, point_ceil_left[1]-r_round_corners];
-point_proof_left_offset = [point_proof_left[0]+r_round_corners, point_proof_left[1]-r_round_corners];
+
 
 
 big_holder_points_round = [
@@ -40,7 +46,7 @@ big_holder_points_round = [
   point_foot_left_offset,
   point_floor_left_offset, 
   point_floor_middle_offset,
-  point_floor_rightoffset,
+  point_floor_right_offset,
   point_ceil_right_offset,
   point_ceil_left_offset,
   point_proof_left_offset,
@@ -69,7 +75,7 @@ laser_hole_points = [
 laser_hole_points_round = [
   point_floor_left_offset, 
   point_floor_middle_offset,
-  point_floor_rightoffset,
+  point_floor_right_offset,
   point_ceil_right_offset,
   point_ceil_left_offset,
 ];
@@ -91,10 +97,12 @@ solid_plate_points_round = [
 left_proof_points_round = [
   point_proof_left_offset,
   point_proof_right_offset,
-  [point_ceil_left_offset[0],
-  point_ceil_left_offset[1]+9.5],
   [point_ceil_right_offset[0],
-  point_ceil_right_offset[1]+9.5],
+  point_ceil_right_offset[1]+2*r_round_corners],
+  [point_ceil_left_offset[0],
+  point_ceil_left_offset[1]+2*r_round_corners],
+//  point_ceil_left_offset[1]+9.5],
+//  point_ceil_right_offset[1]+9.5],
 ];
 
 left_floor_points = [
@@ -108,13 +116,20 @@ left_floor_points = [
 ];
 
 template_set();
+//template_round();
+//solid_plate_round();
+//laser_hole_template_round();
+//polygon(left_proof_points_round);
 
 module template_set() {
   union() {
     template_round();
     
-    translate([0, 0, 0])
+    
+    color("red")
+    translate([0, 0, 1])
     offset(r=r_round_corners, $fn=32)
+    
     polygon(left_proof_points_round);
     
     translate([0, 1, 0])
@@ -123,6 +138,23 @@ module template_set() {
     
   }
 }
+
+module template_round() {
+  difference() {
+    translate([0.1, 0, 0])
+    solid_plate_round();
+    laser_hole_template_round();
+    translate([-10, 0])
+    square([20, 55], center=true);
+  }
+}
+
+module laser_hole_template_round() {
+  color("green")
+  offset(r=r_round_corners, $fn=32)
+  polygon(laser_hole_points_round);
+}
+
 
 //translate([0, 0, -2])
 //solid_plate();
@@ -142,15 +174,6 @@ module template_set() {
 
 
 
-module template_round() {
-  difference() {
-    translate([0.1, 0, 0])
-    solid_plate_round();
-    laser_hole_template_round();
-    translate([-10, 0])
-    square([20, 55], center=true);
-  }
-}
 
 module disks_points_hole() {
   for (point=laser_hole_points_round) {
@@ -158,12 +181,6 @@ module disks_points_hole() {
     translate(point)
     circle(r=2, $fn=32);
   }
-}
-
-module laser_hole_template_round() {
-  color("green")
-  offset(r=r_round_corners, $fn=32)
-  polygon(laser_hole_points_round);
 }
 
 module solid_plate() {
