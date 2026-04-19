@@ -97,22 +97,23 @@ solid_plate_points_round = [
 left_proof_points_round = [
   point_proof_left_offset,
   point_proof_right_offset,
-  [point_ceil_right_offset[0],
+ [point_ceil_right_offset[0],
   point_ceil_right_offset[1]+2*r_round_corners],
-  [point_ceil_left_offset[0],
+ [point_ceil_left_offset[0],
   point_ceil_left_offset[1]+2*r_round_corners],
 //  point_ceil_left_offset[1]+9.5],
 //  point_ceil_right_offset[1]+9.5],
 ];
 
 left_floor_points = [
-  [point_foot_left[0]+2,
-  point_foot_left[1]+4.5],
-  [point_floor_left[0]+2,
+  [point_foot_left[0]+2.1,
+  point_foot_left[1]+2.5],
+  [point_floor_left[0]+2.1,
   point_floor_left[1]-3],
-  [point_floor_middle[0],
-   point_floor_middle[1]-3],
-  point_foot_right_offset
+ [point_floor_middle[0],
+  point_floor_middle[1]-3.41],
+ [point_foot_right_offset[0],
+  point_foot_right_offset[1]-1]
 ];
 
 template_set();
@@ -124,12 +125,9 @@ template_set();
 module template_set() {
   union() {
     template_round();
-    
-    
-    color("red")
-    translate([0, 0, 1])
+
+    translate([0, 0, 0])
     offset(r=r_round_corners, $fn=32)
-    
     polygon(left_proof_points_round);
     
     translate([0, 1, 0])
