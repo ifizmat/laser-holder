@@ -8,13 +8,20 @@ length_holder = 56;
 
 
 //cut_big_holder2();
-difference() {
-    rotate([0, 0, 90])
-    big_holder_round();
-    hole_strong_block_set();
-    translate([-5, 0, 0])
-    hole_strong_block_set();
-    big_screw_holes();
+big_holder_round_set();
+//hole_strong_block_set();
+//hole_strong_block();
+//big_screw_holes();
+
+module big_holder_round_set() {
+  difference() {
+      rotate([0, 0, 90])
+      big_holder_round();
+      hole_strong_block_set();
+      translate([-5, 0, 0])
+      hole_strong_block_set();
+      big_screw_holes();
+  }
 }
 //round_block();
 
@@ -44,6 +51,64 @@ module hole_strong_block() {
   nut_m4_hole();
 }
 
+
+module nut_m4_hole() {
+  //cylinder(d=8, h=20, $fn=64, center=true);
+  rotate([0, 90, 0])
+  cylinder(d=8.2-0.3, h=18, $fn=6, center=true);
+}
+
+module screw_hole_proof2() {
+  hull(){
+    translate([0, 0, 3.8-0.3])
+    rotate([0, 90, 0])
+    cylinder(d=0.5, h=81, $fn=64, center=true);
+    
+    rotate([0, 90, 0])
+    cylinder(d=4.5, h=81, $fn=64, center=true);
+  }
+}
+
+module big_screw_holes() {
+// up hole center
+  translate([-8, 0, 0])
+  screw_hole_proof();
+
+// up hole right
+  translate([-8, 0, 16])
+  screw_hole_proof();
+
+// up hole left
+  translate([-8, 0, -16])
+  screw_hole_proof();
+
+// side center hole
+  translate([0, 6, 0])
+  rotate([0, 0, 90])
+  screw_hole_proof();
+
+// side right hole
+  translate([0, 6, 16])
+  rotate([0, 0, 90])
+  screw_hole_proof();
+
+// side left hole
+  translate([0, 6, -16])
+  rotate([0, 0, 90])
+  screw_hole_proof();
+
+// down hole center
+  translate([18, 0, 0])
+  screw_hole_proof();
+
+// down hole right
+  translate([18, 0, 16])
+  screw_hole_proof();
+
+// down hole left
+  translate([18, 0, -16])
+  screw_hole_proof();
+}
 
 module big_holder() {
   difference() {
@@ -81,16 +146,6 @@ module cut_big_holder2() {
   hole_strong_block_set();
 }
 
-module screw_hole_proof2() {
-  hull(){
-    translate([0, 0, 3.8])
-    rotate([0, 90, 0])
-    cylinder(d=0.5, h=81, $fn=64, center=true);
-    
-    rotate([0, 90, 0])
-    cylinder(d=4.5, h=81, $fn=64, center=true);
-  }
-}
 
 module round_block() {
   ro = 8;
@@ -245,41 +300,6 @@ module gopro_foot_trapez_mini2() {
 
 
 
-module big_screw_holes() {
-// up hole center
-  translate([-8, 0, 0])
- screw_hole_proof();
-
-// up hole right
-  translate([-8, 0, 16])
- screw_hole_proof();
-
-// up hole left
-  translate([-8, 0, -16])
-  screw_hole_proof();
-
-//  screw_hole();
-// right hole
-  translate([0, 6, 0])
-  rotate([0, 0, 90])
-  screw_hole_proof();
-//  screw_hole();
-
-// down hole center
-  translate([18, 0, 0])
-  screw_hole_proof();
-
-// down hole right
-  translate([18, 0, 16])
-  screw_hole_proof();
-
-// down hole left
-  translate([18, 0, -16])
-  screw_hole_proof();
-
-//  screw_hole();
- 
-}
 
 module mini_holder() {
   difference() {
@@ -351,7 +371,7 @@ module screw_hole() {
 
 module screw_hole_proof() {
   hull(){
-    translate([0, 0, 3.8])
+    translate([0, 0, 3.8-0.3])
     rotate([0, 90, 0])
     cylinder(d=0.5, h=31, $fn=64, center=true);
     
@@ -382,12 +402,6 @@ module screw_m6_hole_proof() {
     rotate([0, 90, 0])
     cylinder(d=7, h=31, $fn=64, center=true);
   }
-}
-
-module nut_m4_hole() {
-  //cylinder(d=8, h=20, $fn=64, center=true);
-  rotate([0, 90, 0])
-  cylinder(d=8.2, h=18, $fn=6, center=true);
 }
 
 module camera_screw_hole() {
